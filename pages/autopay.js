@@ -1,9 +1,9 @@
 
 import fetch from 'node-fetch';
 import {myFont} from "../public/myFont.js";
-import Links from "./(components)/Links.js";
+import Links from "../public/Links.js";
 import { useEffect, useState} from "react"
-import {db} from "./(components)/firestoreInit.js";
+import {db} from "../public/firestoreInit.js";
 import { doc, onSnapshot } from "firebase/firestore";
 
 export async function getStaticProps(){
@@ -14,14 +14,12 @@ export async function getStaticProps(){
         revalidate: 1
     }
 }
-//
+
 export default function Autopay(props){
 
-    const emailAddresses = props.info[NEXT_PUBLIC_PROPERTY_ID].emailAddresses
-    const phoneNumbers = props.info[NEXT_PUBLIC_PROPERTY_ID].phoneNumbers
-    const initialAutopayActive =  props.info[NEXT_PUBLIC_PROPERTY_ID].autopay
-
-
+    const emailAddresses = props.info[process.env.NEXT_PUBLIC_PROPERTY_ID].emailAddresses
+    const phoneNumbers = props.info[process.env.NEXT_PUBLIC_PROPERTY_ID].phoneNumbers
+    const initialAutopayActive =  props.info[process.env.NEXT_PUBLIC_PROPERTY_ID].autopay
 
     const [autopayActive, setAutopayActive] = useState(initialAutopayActive)
     const [authContacts, setAuthContacts] = useState({emailAddresses: emailAddresses, phoneNumbers: phoneNumbers})
@@ -34,9 +32,6 @@ export default function Autopay(props){
         buttons.push(<button className={"card"} onClick={(x) => alert(5)}> <p>{authContacts["phoneNumbers"][key]}</p></button>)
     }
 
-    console.log(buttons)
-//     buttons.push(<button className={"card"} onClick = {() => alert("()")}><p>{authContacts[elem]}</p></button>)
-//    }
 
     useEffect(() => {
         const unsub = onSnapshot(doc(db, "units/"+process.env.NEXT_PUBLIC_PROPERTY_ID), (doc) => {
@@ -45,8 +40,6 @@ export default function Autopay(props){
         });
         return () => unsub()
     },[])
-
-
 
     let links = [{label: "<---", href: "/"}, {label:  autopayActive ? ("autopay: active") : ("autopay: inactive"), href: "/"}]
 

@@ -1,14 +1,14 @@
 import fetch from 'node-fetch';
 import {myFont} from "../public/myFont.js";
-import Links from "./(components)/Links.js";
+import Links from "../public/Links.js";
 import { useEffect, useState} from "react"
-import {db} from "./(components)/firestoreInit.js";
+import {db} from "../public/firestoreInit.js";
 import { doc, onSnapshot } from "firebase/firestore";
 
 import React from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-import CheckoutForm from "./(components)/CheckoutForm";
+import CheckoutForm from "../public/CheckoutForm";
 
 export async function getStaticPaths(){
     const paths = await fetch("https://undefxx.com/api/staticParams", {method: "GET", headers: { propertyID: process.env.NEXT_PUBLIC_PROPERTY_ID}}).then(x => x.json())
