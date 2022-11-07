@@ -4,7 +4,7 @@ import {myFont} from "../app/myFont.js";
 
 
 export async function getStaticProps(){
-    const info = await fetch("https://undefxx.com/api", {method: "GET", headers: {propertyID: "10144 Boca Entrada Blvd APT 116", includeFields: "name,applicationsOpen"}}).then(x => x.json());
+    const info = await fetch("https://undefxx.com/api", {method: "GET", headers: {propertyID: process.env.NEXT_PUBLIC_PROPERTY_ID, includeFields: "name,applicationsOpen"}}).then(x => x.json());
     const unpaid = await fetch("https://undefxx.com/api/p", {method: "GET", headers: {status: "unpaid", propertyID : process.env.NEXT_PUBLIC_PROPERTY_ID}}).then(x=> x.json());
     return{
         props:{info , unpaid},

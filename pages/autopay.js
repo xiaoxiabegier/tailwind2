@@ -9,7 +9,7 @@ import "./styles/loginCards.css"
 
 export async function getStaticProps(){
 
-    const info = await fetch("https://undefxx.com/api", {method: "GET", headers: {propertyID: "10144 Boca Entrada Blvd APT 116", includeFields: "autopay,emailAddresses,phoneNumbers"}}).then(x => x.json());
+    const info = await fetch("https://undefxx.com/api", {method: "GET", headers: {propertyID: process.env.NEXT_PUBLIC_PROPERTY_ID, includeFields: "autopay,emailAddresses,phoneNumbers"}}).then(x => x.json());
     return {
         props: { info },
         revalidate: 1
