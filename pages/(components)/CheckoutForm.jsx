@@ -1,4 +1,3 @@
-import "./checkoutForm.css"
 import React from "react";
 import {
   PaymentElement,

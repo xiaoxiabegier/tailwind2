@@ -1,10 +1,11 @@
 import { Html, Head, Main, NextScript } from 'next/document'
+import {PROPERTY_ID} from "../propertyid";
 
 export default function Document() {
     return (
             <Html>
                 <Head />
-                <title>{process.env.NEXT_PUBLIC_PROPERTY_ID}</title>
+                <title>{PROPERTY_ID}</title>
                 <body>
                     <Main />
                     <NextScript />

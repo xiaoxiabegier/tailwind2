@@ -1,7 +1,6 @@
-import {myFont} from "../app/myFont";
+import {myFont} from "../public/myFont";
 import React, {useState} from "react";
-import Links from "../app/(components)/Links";
-import "../app/globals.css";
+import Links from "./(components)/Links";
 import fetch from 'node-fetch';
 import {
   DataGridPremium,
@@ -11,6 +10,7 @@ import {
 } from '@mui/x-data-grid-premium';
 import Box from '@mui/material/Box';
 import {createTheme, ThemeProvider} from "@mui/material";
+import {PROPERTY_ID} from "../propertyid";
 
 const theme = createTheme({
     palette: {
@@ -34,7 +34,7 @@ const theme = createTheme({
 
 export async function getStaticProps(){
 
-    const payments = await fetch("https://undefxx.com/api/p", {method: "GET", headers: { propertyID : process.env.NEXT_PUBLIC_PROPERTY_ID}}).then(x=> x.json());
+    const payments = await fetch("https://undefxx.com/api/p", {method: "GET", headers: { propertyID : PROPERTY_ID}}).then(x=> x.json());
 
     return{
         props: {payments},
@@ -44,9 +44,9 @@ export async function getStaticProps(){
 
 
 export default function Log(props){
-    const unpaid =  props.payments[process.env.NEXT_PUBLIC_PROPERTY_ID].unpaid
-    const processing =  props.payments[process.env.NEXT_PUBLIC_PROPERTY_ID].processing
-    const paid =  props.payments[process.env.NEXT_PUBLIC_PROPERTY_ID].paid
+    const unpaid =  props.payments[PROPERTY_ID].unpaid
+    const processing =  props.payments[PROPERTY_ID].processing
+    const paid =  props.payments[PROPERTY_ID].paid
     const logData = {... processing, ... paid }
 
     let links = [{label: "<---", href: "/"}, {label: "", href: "/"}]
