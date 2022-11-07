@@ -5,11 +5,10 @@ import Links from "./(components)/Links.js";
 import { useEffect, useState} from "react"
 import {db} from "./(components)/firestoreInit.js";
 import { doc, onSnapshot } from "firebase/firestore";
-import {PROPERTY_ID} from "../propertyid";
 
 export async function getStaticProps(){
 
-    const info = await fetch("https://undefxx.com/api", {method: "GET", headers: {propertyID: PROPERTY_ID, includeFields: "autopay,emailAddresses,phoneNumbers"}}).then(x => x.json());
+    const info = await fetch("https://undefxx.com/api", {method: "GET", headers: {propertyID: process.env.NEXT_PUBLIC_PROPERTY_ID, includeFields: "autopay,emailAddresses,phoneNumbers"}}).then(x => x.json());
     return {
         props: { info },
         revalidate: 1
@@ -18,9 +17,9 @@ export async function getStaticProps(){
 //
 export default function Autopay(props){
 
-    const emailAddresses = props.info[PROPERTY_ID].emailAddresses
-    const phoneNumbers = props.info[PROPERTY_ID].phoneNumbers
-    const initialAutopayActive =  props.info[PROPERTY_ID].autopay
+    const emailAddresses = props.info[NEXT_PUBLIC_PROPERTY_ID].emailAddresses
+    const phoneNumbers = props.info[NEXT_PUBLIC_PROPERTY_ID].phoneNumbers
+    const initialAutopayActive =  props.info[NEXT_PUBLIC_PROPERTY_ID].autopay
 
 
 
@@ -40,7 +39,7 @@ export default function Autopay(props){
 //    }
 
     useEffect(() => {
-        const unsub = onSnapshot(doc(db, "units/"+PROPERTY_ID), (doc) => {
+        const unsub = onSnapshot(doc(db, "units/"+process.env.NEXT_PUBLIC_PROPERTY_ID), (doc) => {
             setAutopayActive(doc.data().autopay);
             console.log("Current data: ", doc.data());
         });

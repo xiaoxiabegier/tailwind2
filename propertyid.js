@@ -1,1 +1,0 @@
-export const PROPERTY_ID = "18572 Cull Canyon Rd"
