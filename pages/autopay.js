@@ -1,7 +1,7 @@
 
 import fetch from 'node-fetch';
 import {myFont} from "../public/myFont.js";
-import Links from "./(components)/Links";
+import Links from "../public/components/Links";
 import { useEffect, useState} from "react"
 import {db} from "../public/firestoreInit.js";
 import { doc, onSnapshot } from "firebase/firestore";
