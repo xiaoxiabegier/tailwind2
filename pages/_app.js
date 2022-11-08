@@ -1,6 +1,5 @@
-import "./globals.css"
-import "./styles/loginCards.css"
-import "../public/checkoutForm.css"
+
+import "./styles/buildtailwind.css"
 export default function MyApp({ Component, pageProps }) {
     return <Component {...pageProps} />
 }

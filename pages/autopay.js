@@ -1,7 +1,7 @@
 
 import fetch from 'node-fetch';
 import {myFont} from "../public/myFont.js";
-import Links from "../public/Links.js";
+import Links from "./Links";
 import { useEffect, useState} from "react"
 import {db} from "../public/firestoreInit.js";
 import { doc, onSnapshot } from "firebase/firestore";
@@ -26,7 +26,7 @@ export default function Autopay(props){
 
     let buttons = []
     for(let key in authContacts["emailAddresses"]) {
-        buttons.push(<button className={"card"} onClick={(x) => alert(5)}> <p>{authContacts["emailAddresses"][key]}</p></button>)
+        buttons.push(<div class="  flex items-center my-1 "><button class = " outline outline-blue-4 p-2 rounded-lg mx-auto bg-red-400  " className={"card"} onClick={(x) => alert(5)}> <p>{authContacts["emailAddresses"][key]}</p></button></div>)
     }
     for(let key in authContacts["phoneNumbers"]) {
         buttons.push(<button className={"card"} onClick={(x) => alert(5)}> <p>{authContacts["phoneNumbers"][key]}</p></button>)
@@ -45,8 +45,8 @@ export default function Autopay(props){
 
     return(
             <div className={myFont.className}>
-            <Links links = {links}/>
-            <div className={"grid"}>
+            <Links links = {links} />
+            <div  className={"grid"}>
             {buttons}
             </div>
             </div>

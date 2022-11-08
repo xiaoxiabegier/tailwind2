@@ -1,4 +1,6 @@
 import Link from "next/link";
+import {myFont} from "../public/myFont.js";
+
 
 
 export default function Links(props){
@@ -8,8 +10,12 @@ export default function Links(props){
         result.push(<><Link href = {props.links[elem].href}> {props.links[elem].label} </Link> <br/></>)
     }
     return(
-            <div className={"links"}>
+            <div className={myFont.className}>
+            <div >
+            <div class=" mt-56 text-center content-center text-5xl leading-tight ">
                 {result}
+            </div>
+            </div>
             </div>
     )
 }

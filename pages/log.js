@@ -1,6 +1,6 @@
 import {myFont} from "../public/myFont";
 import React, {useState} from "react";
-import Links from "../public/Links";
+import Links from "./Links";
 import fetch from 'node-fetch';
 import {
   DataGridPremium,
@@ -56,17 +56,19 @@ export default function Log(props){
     links.push({label: "...", href: '/'})
 
     const [rows, setRows] = useState(getRows(logData))
-    const [columns, setColumns] = useState([{field: "name", headerName:"id", width: 150}, {field: "status", headerName:"status", width: 150},  {field: "total", headerName: "total", width: 150, type: "number"}])
+    const [columns, setColumns] = useState([{field: "name", headerName:"id", width: 100}, {field: "status", headerName:"status", width: 100},  {field: "total", headerName: "total", width: 100, type: "number"}])
 
 
     return(
             <div className={myFont.className}>
+            <div>
                 <ThemeProvider theme={theme}>
                 <Links links = {links}/>
-                <Box className={"dataGrid"} sx ={{height: 465, width: 540}}>
-                    <DataGridPremium  rows ={rows} columns ={columns} components={{ Toolbar: GridToolbar }} experimentalFeatures={{ aggregation: true }}/>
+                <Box  sx={{height: 540}}> 
+                     <DataGridPremium  rows ={rows} columns ={columns} components={{ Toolbar: GridToolbar }} experimentalFeatures={{ aggregation: true }}/> 
                 </Box>
                 </ThemeProvider>
+            </div>
             </div>
     )
 }

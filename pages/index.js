@@ -2,6 +2,7 @@ import Links from "./Links";
 import {myFont} from "../public/myFont.js";
 
 
+
 export async function getStaticProps(){
     const info = await fetch("https://undefxx.com/api", {method: "GET", headers: {propertyID: process.env.NEXT_PUBLIC_PROPERTY_ID, includeFields: "name,applicationsOpen"}}).then(x => x.json());
     const unpaid = await fetch("https://undefxx.com/api/p", {method: "GET", headers: {status: "unpaid", propertyID : process.env.NEXT_PUBLIC_PROPERTY_ID}}).then(x=> x.json());
@@ -37,7 +38,9 @@ export default function Page(props){
 
     return(
             <div className={myFont.className}>
-                <Links links ={links} dynamicRoutes = {dynamicRoutes}/>
+                <div >
+                <Links links ={links}/>
+                </div>
             </div>
             )
 }
