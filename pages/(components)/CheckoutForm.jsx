@@ -77,10 +77,11 @@ export default function CheckoutForm() {
   };
 
   return (
-    <div className={"body"}>
-    <form id="payment-form" onSubmit={handleSubmit}>
+    <div className={" m-16  body "}>
+    <form id="payment-form" onSubmit={handleSubmit} >
       <PaymentElement id="payment-element" />
-      <button className={"button"} disabled={isLoading || !stripe || !elements} id="submit">
+      
+      <button className={"w-full bg-indigo-300 rounded-lg"} disabled={isLoading || !stripe || !elements} id="submit">
         <span id="button-text">
           {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
         </span>

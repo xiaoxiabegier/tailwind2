@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {myFont} from "../public/myFont.js";
+import {myFont} from "../../public/myFont.js";
 
 
 

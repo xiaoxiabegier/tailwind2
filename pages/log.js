@@ -1,6 +1,6 @@
 import {myFont} from "../public/myFont";
 import React, {useState} from "react";
-import Links from "./Links";
+import Links from "./(components)/Links";
 import fetch from 'node-fetch';
 import {
   DataGridPremium,

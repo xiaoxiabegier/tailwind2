@@ -1,4 +1,4 @@
-import Links from "./Links";
+import Links from "./(components)/Links";
 import {myFont} from "../public/myFont.js";
 
 
